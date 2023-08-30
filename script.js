@@ -59,7 +59,7 @@ const onchange = async () => {
     <i class="me-2 bi bi-clock"></i>
     <span class="fw-bold">Timezone: </span>
     <span class="flex-fill text-center fontMobile">${countryInfo.timezones.join(
-      ","
+      ", "
     )}</span>
   </li>
   <li class="list-group-item d-flex">
@@ -73,7 +73,7 @@ const onchange = async () => {
     <i class="me-2 bi bi-building"></i>
     <span class="fw-bold">Capital: </span>
     <span class="flex-fill text-center fontMobile">${
-      countryInfo.capital ?? "No Capital"
+      countryInfo.capital?.join(", ") ?? "No Capital"
     }</span>
   </li>
   <li class="list-group-item d-flex">
@@ -88,7 +88,7 @@ const onchange = async () => {
     <span class="fw-bold">Languages: </span>
     <span class="flex-fill text-center fontMobile">${
       countryInfo.languages
-        ? Object.values(countryInfo.languages).toString(",")
+        ? Object.values(countryInfo.languages).join(", ")
         : "No official languages"
     }</span>
   </li>
@@ -98,9 +98,9 @@ const onchange = async () => {
     <span class="flex-fill text-center fontMobile">
    ${
      countryInfo.currencies
-       ? Object.values(countryInfo.currencies).map(
-           (idx) => idx.name + " " + idx.symbol
-         )
+       ? Object.values(countryInfo.currencies)
+           .map((idx) => idx.name + " " + idx.symbol)
+           .join(", ")
        : "No official currency"
    }
     </span>
